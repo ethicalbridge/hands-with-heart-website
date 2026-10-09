@@ -648,31 +648,48 @@ missions_body = head("Missions",
 """
 
 # ------------------------------------------------------------------ STORIES
+# Stories copied from https://handswithheartfoundation.org/stories/ (saved page, Oct 2026).
+# (tag label, filter key, colour class, title, excerpt paragraphs, original URL, optional image file in assets/img/stories/)
 STORIES = [
-    ("Bali", "bali", "Pools, roofs and bathrooms: trust turned into infrastructure",
-     "In 2025 a donor believed in us because our years of commitment had created legitimacy. That trust became bathroom renovations at SLB Negeri 1 Denpasar, swimming-pool support at Yayasan Legong and a roof renovation at Yayasan Mentari Fajar, chosen with the partners who use these spaces every day.",
-     "2025 Annual Report"),
-    ("Costa Rica", "costa", "Walking into Bribri territory",
-     "Care in the Bribri and Talamanca territories means walking into remote areas and accepting difficult conditions. Together with Asociación Dawe Ese Wakpa Kimoie, our team brings care to families at home, and returns, because trust is built through repeated presence.",
-     "2025 Annual Report"),
-    ("Ukraine", "ukraine", "Treating the nervous system, not only the body",
-     "Treating combat medics, including some who had experienced captivity, and soldiers with severe amputations showed us that care could not focus only on muscles, scars, joints or pain. It also meant attention to regulation, safety, presence and co-regulation.",
-     "2024 Annual Report"),
-    ("Adaptive Sport", "sport", "Between heats",
-     "At para surfing championships our team keeps athletes mobile, pain-free and ready to compete. Here disability is seen through performance, autonomy and sport, and organisers increasingly treat specialised healthcare as part of the event.",
-     "Annual Reports 2023–2025"),
+    ("Costa Rica", "costa", "costa", "Costa Rica: Una amputación no termina en el quirófano",
+     ["Hace unas semanas regresé con el equipo de Hands With Heart a visitar a un hombre de 73 años al que llevamos siguiendo desde hace tres años en territorio indígena Bribri, en Talamanca, Costa Rica.",
+      "Sabíamos que su pierna había empeorado mucho durante los últimos meses. Lo que no sabíamos era que, desde nuestra última visita, su mujer también había sufrido una amputación por debajo de la rodilla."],
+     "https://handswithheartfoundation.org/una-amputacion/", None, "Spanish"),
+    ("Ukraine", "ukraine", "ukraine", "Ukraine: When Rebuilding Means Learning to Live Again",
+     ["There is one border you cross with a document, and another you cross with memory. For us, entering Ukraine for the fifteenth time since 2022 belongs to the second category. Four years after that first journey, crossing the border again no longer simply means returning to a country at war. It means returning to people, places and faces that have become part of a story we have been building, mission after mission."],
+     "https://handswithheartfoundation.org/ukraine-15-times-later-when-rebuilding-means-learning-to-live-again/", None, "English"),
+    ("Ten years", "story", "ink", "A Decade of Changing Lives, One Mission at a Time (10 years)",
+     ["Over the past decade, we have learned that our greatest achievements cannot be measured by numbers alone. They are measured by people. By children who discovered new possibilities. By families who found hope. By volunteers whose lives were transformed as much as those they came to serve. At Hands With Heart, many of our missions are named after the very people who inspired them. Behind every mission is a child, a family, or a community whose story reminds us why we do what we do."],
+     "https://handswithheartfoundation.org/ten-years-of-hands-with-heart-a-decade-of-changing-lives-one-mission-at-a-time/", None, "English"),
+    ("Costa Rica", "costa", "costa", "How the Support of a Community Can Change a Family’s Journey",
+     ["For years, the Carlos Luis Valle Masís Special Education Center in Cartago, Costa Rica, has been much more than a place of learning for Samuel Elizondo. It is where he has found therapy, encouragement, and people who believe in his potential.",
+      "Samuel lives with cerebral palsy, a condition that affects the mobility of part of his hip and requires ongoing care. Behind every step forward are years of perseverance, dedication, and the unwavering support of his mother, Angie Ortiz."],
+     "https://handswithheartfoundation.org/samuel-elizondo-how-the-support-of-a-community-can-change-a-familys-journey/", None, "English"),
+    ("Our founder", "story", "ink", "Dr. Aranda: “I am not looking for disciples, but for committed hands”",
+     ["At Hands With Heart, we have carried out more than 85 missions in different hostile and isolated areas. In our quest to reach places where no one else goes, to offer disabled people a minimum of care and respect, I have repeatedly seen misery up close. And I have also seen indifference in response to that misery; hands tucked into pockets while life passes by…"],
+     "https://handswithheartfoundation.org/i-am-not-looking-for-disciples-but-for-committed-hands/", None, "English"),
 ]
+
+
+def story_html(tag, key, cls, title, paras, url, img, lang):
+    pic = f'<img src="assets/img/stories/{img}" alt="" loading="lazy">' if img else ""
+    body = "".join(f"<p>{e(p)}</p>" for p in paras)
+    return (f'<article class="story-item" data-cat="{key}"><div><span class="tag {cls}">{e(tag)}</span>{pic}</div>'
+            f'<div><h2 style="font-size:1.5rem">{e(title)}</h2>{body}'
+            f'<a class="link-arrow" href="{url}" target="_blank" rel="noopener">Read the full story ({lang}) ↗</a></div></article>')
+
+
 stories_body = head("Stories",
-    "Real people, real places, told with consent. We show agency, never pity.",
+    "Stories of impact, hope, and the journey we share.",
     "Stories") + "".join([
     '<section><div class="wrap">',
     '<div class="filter" data-target="#story-list" role="group" aria-label="Filter stories"><button aria-pressed="true" data-filter="all">All</button>',
-    '<button aria-pressed="false" data-filter="bali">Bali</button><button aria-pressed="false" data-filter="costa">Costa Rica</button>',
-    '<button aria-pressed="false" data-filter="ukraine">Ukraine</button><button aria-pressed="false" data-filter="sport">Adaptive Sport</button></div>',
+    '<button aria-pressed="false" data-filter="costa">Costa Rica</button><button aria-pressed="false" data-filter="ukraine">Ukraine</button>',
+    '<button aria-pressed="false" data-filter="story">Our story</button></div>',
     '<div id="story-list">',
-    "".join(f'<article class="story-item" data-cat="{c}"><div><span class="tag {c}">{e(t)}</span></div><div><h2 style="font-size:1.5rem">{e(h)}</h2><p>{e(p)}</p><p class="small">Source: {e(s)}</p></div></article>' for t, c, h, p, s in STORIES),
+    "".join(story_html(*st) for st in STORIES),
     '</div>',
-    '<div class="callout"><span class="eyebrow">More stories</span><p>The stories above come from our annual reports. Our full set of impact stories is on our <a href="https://handswithheartfoundation.org/stories/" target="_blank" rel="noopener">current website</a>.</p></div>\n    <div class="todo" style="margin-top:var(--s3)">To add: copy each story from the current site into the <code>STORIES</code> list in <code>build.py</code> (title, text, photo, consent). I could not open that page from my environment, so none of its text has been copied.</div>',
+    '<div class="todo" style="margin-top:var(--s4)">To add: a photograph for each story (save it in <code>assets/img/stories/</code> and put the file name in the <code>STORIES</code> list in <code>build.py</code>). Only use photographs with recorded consent.</div>',
     '</div></section>',
     '<section class="bg-ink"><div class="wrap"><span class="eyebrow">How we tell stories</span><h2>Would the person in this photo, or their family, be proud to see it on our homepage?</h2>',
     '<p>That is our test. We publish images and testimonies only with written consent, we avoid pity-based imagery, we show local therapists as visible as international volunteers, and we name vulnerable people only with explicit consent.</p></div></section>',

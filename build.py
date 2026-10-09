@@ -679,20 +679,7 @@ stories_body = head("Stories",
 ])
 
 # ------------------------------------------------------------------ NEWS
-NEWS = [
-    ("2026-10-05", "5 October 2026", "Bahía de Niños: architect and contractor design brief issued",
-     "We issued a consolidated design brief for the first phase of Bahía de Niños, our planned permanent centre in Bali, to the architect and contractors. Next: survey-based design, a measured bill of quantities and comparable contractor quotes.", "projects/bahia-de-ninos.html", "Read about Bahía de Niños"),
-    ("2026-10-01", "October 2026", "Taking part in the Rebuilding International Forum, Lorca",
-     "Hands With Heart is taking part in the Rebuilding International Forum in Lorca, Spain, as we develop Human Recovery: rebuilding people, not only places.", "projects/missions.html#ukraine", "Read about Ukraine and Human Recovery"),
-    ("2026-06-19", "19 June 2026", "Official survey of the Bahía de Niños site completed",
-     "The official boundary survey confirmed a 5,404 m² site in Sibang, Badung Regency, Bali.", "projects/bahia-de-ninos.html", "Read about Bahía de Niños"),
-    ("2026-01-01", "2026", "2025 Annual Report published",
-     "In 2025 we delivered 1,751 clinical sessions to 713 people and generated an estimated €252,450 of direct value. We report both numbers, and say where we need to improve.", "reports.html", "Read the report"),
-    ("2026-01-02", "2026", "Public-utility status in Spain",
-     "Our Spanish association now holds public-utility status, a step in strengthening our governance for the years ahead.", "objectives/systems-for-scale.html", "Read about our systems"),
-    ("2025-12-01", "2025", "€16,000 of infrastructure support to our Bali partners",
-     "Bathroom renovations at SLB Negeri 1 Denpasar, swimming-pool support at Yayasan Legong and a roof renovation at Yayasan Mentari Fajar.", "projects/missions.html#bali", "Read about Bali"),
-]
+NEWS = []  # Add your own announcements here (date, label, headline, summary, link, link label).
 
 # Press coverage found online (Oct 2026). Summaries are written from the headline and the search
 # extract only; check each against the full article before relying on details.
@@ -724,13 +711,8 @@ PRESS = [
 ]
 
 news_body = head("News",
-    "What is happening at Hands With Heart: milestones, field updates and announcements.", "News") + '<section><div class="wrap">' + "".join(
-    f'<article class="news-item"><time datetime="{d}">{e(dl)}</time><div><h2 style="font-size:1.5rem">{e(t)}</h2><p>{e(b)}</p><a class="link-arrow" href="{h}">{e(hl)} →</a></div></article>'
-    for d, dl, t, b, h, hl in sorted(NEWS, reverse=True)) + """
-<div class="todo" style="margin-top:var(--s4)">To add: new items go in the <code>NEWS</code> list in <code>build.py</code> (date, headline, summary, link). Check these items before publishing.</div>
-</div></section>
-<section class="bg-paper" id="press"><div class="wrap"><span class="eyebrow">In the press</span><h2>Hands With Heart in the media</h2>
-<p>Independent coverage of our work. Most articles are in Spanish.</p><div class="grid g2">""" + "".join(
+    "Independent coverage of Hands With Heart and Dr Jorge Aranda in the media.", "News") + """
+<section id="press"><div class="wrap"><span class="eyebrow">In the press</span><p>Most articles are in Spanish.</p><div class="grid g2">""" + "".join(
     f'''<article class="card topline"><span class="rel">{e(o)}</span> <span class="small">{e(dl)} · {lang}</span>
 <h3 style="margin-top:10px">{e(t)}</h3><p>{e(b)}</p><a class="link-arrow" href="{u}" target="_blank" rel="noopener">Read the article ({lang}) ↗</a></article>'''
     for d, dl, o, lang, t, b, u in sorted(PRESS, reverse=True)) + """</div></div></section>"""

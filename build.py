@@ -693,12 +693,47 @@ NEWS = [
     ("2025-12-01", "2025", "€16,000 of infrastructure support to our Bali partners",
      "Bathroom renovations at SLB Negeri 1 Denpasar, swimming-pool support at Yayasan Legong and a roof renovation at Yayasan Mentari Fajar.", "projects/missions.html#bali", "Read about Bali"),
 ]
+
+# Press coverage found online (Oct 2026). Summaries are written from the headline and the search
+# extract only; check each against the full article before relying on details.
+PRESS = [
+    ("2025-05-23", "23 May 2025", "El Español", "Spanish",
+     "Las 81 misiones del Dr. Aranda, el 'héroe' español que salva a niños enfermos por el mundo",
+     "A long profile of Dr Jorge Aranda and the 81 missions he has led since founding Hands With Heart in 2016, including his work with wounded soldiers in Ukraine. In the interview he describes the free, multidisciplinary care the Foundation gives to children and adults with disabilities.",
+     "https://www.elespanol.com/reportajes/20250523/misiones-dr-aranda-heroe-espanol-salva-ninos-enfermos-mundo-ucrania-ayude-azov/1003743702036_0.html"),
+    ("2022-12-25", "25 December 2022", "Crónica Global (El Español)", "Spanish",
+     "Hands With Heart, la ONG barcelonesa que ayuda a niños con discapacidad alrededor del mundo",
+     "An introduction to the Foundation as a Barcelona-based NGO providing free healthcare to children with disabilities in Bali, Costa Rica and Romania, and to Dr Aranda, who collected the Cadena 100 award on its behalf.",
+     "https://cronicaglobal.elespanol.com/vida/20221225/hands-with-heart-ong-barcelonesa-discapacidad-alrededor/728677137_0.html"),
+    ("2022-12-15", "15 December 2022", "Cadena 100", "Spanish",
+     "Jorge Aranda: “Todos podemos ayudar, hay que cultivar tu talento y ofrecerlo a los demás”",
+     "Dr Aranda is recognised in the “For a better world” category of the Cadena 100 ¡Buenos días, Javi y Mar! awards for his work with a young man in Romania with cerebral palsy, whom he has treated free of charge every month.",
+     "https://www.cadena100.es/eventos/premios-buenos-dias-javi-y-mar-por-un-mundo-mejor/noticias/jorge-aranda-todos-podemos-ayudar-hay-que-cultivar-talento-ofrecerlo-los-demas-20221215_2451504"),
+    ("2024-01-01", "Ukraine", "Yahoo Noticias / EFE", "Spanish",
+     "“Obligación moral de ayudar”: terapeuta español que trata amputados de guerra en Ucrania",
+     "Dr Aranda explains why he regularly travels to the Halychyna rehabilitation centre in Lviv to treat Ukrainian military personnel with amputations, and the other support he has organised for Ukrainians. He describes the work as a moral duty.",
+     "https://es-us.noticias.yahoo.com/obligaci%C3%B3n-moral-ayudar-terapeuta-espa%C3%B1ol-030146553.html"),
+    ("2023-06-01", "2023", "The Bridge, Green School Bali", "English",
+     "Disability in Bali: collective trauma and Hands With Heart Foundation",
+     "A talk and community conversation at Green School Bali's The Bridge about the reality of people with disabilities on the island and the collective trauma linked to disability, led by Dr Aranda.",
+     "https://thebridge.greenschool.org/disability-in-bali-collective-trauma-hands-with-heart-foundation/"),
+    ("2020-06-16", "16 June 2020", "National Academy of Osteopathy", "English",
+     "Charity work in Bali",
+     "An osteopathy school's account of volunteering with Hands With Heart in Bali, where supervised osteopaths treat children with disabilities at partner schools and centres.",
+     "https://nationalacademyofosteopathy.com/2020/06/16/charity-work-in-bali/"),
+]
+
 news_body = head("News",
     "What is happening at Hands With Heart: milestones, field updates and announcements.", "News") + '<section><div class="wrap">' + "".join(
     f'<article class="news-item"><time datetime="{d}">{e(dl)}</time><div><h2 style="font-size:1.5rem">{e(t)}</h2><p>{e(b)}</p><a class="link-arrow" href="{h}">{e(hl)} →</a></div></article>'
     for d, dl, t, b, h, hl in sorted(NEWS, reverse=True)) + """
 <div class="todo" style="margin-top:var(--s4)">To add: new items go in the <code>NEWS</code> list in <code>build.py</code> (date, headline, summary, link). Check these items before publishing.</div>
-</div></section>"""
+</div></section>
+<section class="bg-paper" id="press"><div class="wrap"><span class="eyebrow">In the press</span><h2>Hands With Heart in the media</h2>
+<p>Independent coverage of our work. Most articles are in Spanish.</p><div class="grid g2">""" + "".join(
+    f'''<article class="card topline"><span class="rel">{e(o)}</span> <span class="small">{e(dl)} · {lang}</span>
+<h3 style="margin-top:10px">{e(t)}</h3><p>{e(b)}</p><a class="link-arrow" href="{u}" target="_blank" rel="noopener">Read the article ({lang}) ↗</a></article>'''
+    for d, dl, o, lang, t, b, u in sorted(PRESS, reverse=True)) + """</div></div></section>"""
 
 # ------------------------------------------------------------------ REPORTS
 REPORTS = [

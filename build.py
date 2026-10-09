@@ -515,25 +515,6 @@ parasurf_body = head("ParaSurf",
 <section class="bg-paper"><div class="wrap grid g2" style="align-items:center"><div><span class="eyebrow">Are you an organiser?</span><h2>Bring a healthcare team to your event</h2><p>Organisers who work with us help cover team costs. Get in touch to talk about your championship.</p></div><div style="justify-self:end"><a class="btn btn-secondary" href="../contact.html">Contact us</a></div></div></section>
 """
 
-PACKAGES = [
-    ("01", "Complete Pediatric Rehabilitation Gym", "Core for opening", "26,000", "50,000"),
-    ("02", "Advanced Photobiomodulation / Therapeutic Laser System", "Therapy technology", "20,000", "40,000"),
-    ("03", "Equipped Pediatric Treatment Rooms", "Core for opening", "21,000", "40,000"),
-    ("04", "Sensory & Regulation Room", "Core for opening", "27,000", "50,000"),
-    ("05", "Advanced Supported Gait Training System", "Therapy technology", "32,000", "75,000"),
-    ("06", "Interactive Movement & Therapy Floor", "Therapy technology", "9,000", "25,000"),
-    ("07", "Accessible Changing, Shower & Transfer Suite", "Core for opening", "26,000", "50,000"),
-    ("08", "Digital Gait, Balance & Force-Plate System", "Therapy technology", "18,000", "45,000"),
-    ("09", "Eye-Gaze Communication & AAC Station", "Therapy technology", "18,000", "30,000"),
-    ("10", "3D Printing & Adaptive Equipment Workshop", "Therapy technology", "12,000", "30,000"),
-    ("11", "Portable Clinical Ultrasound / POCUS System", "After clinical validation", "8,000", "20,000"),
-    ("12", "Pressure Mapping & Seating Assessment System", "After clinical validation", "12,000", "25,000"),
-    ("13", "Functional Electrical Stimulation (FES) Package", "After clinical validation", "14,000", "30,000"),
-    ("14", "Robotic / Assisted Upper-Limb Rehabilitation System", "After clinical validation", "22,000", "40,000"),
-    ("15", "Adaptive / Inclusive Playground", "Built environment & legacy", "55,000", "100,000"),
-    ("16", "Covered Outdoor Therapy Pavilion", "Built environment & legacy", "30,000", "50,000"),
-]
-
 bahia_body = head("Bahía de Niños",
     "A permanent home for free disability care, rehabilitation, training and inclusion for children in Bali.",
     "Flagship project · Bali, Indonesia", [("Our projects", "index.html"), ("Bahía de Niños", None)]) + f"""
@@ -614,15 +595,10 @@ bahia_body = head("Bahía de Niños",
  <p>Bahía de Niños needs three kinds of support: capital to build Phase 1, equipment that makes the centre work for children, and operating funding so it runs from day one.</p>
  <div class="grid g3">
   <div class="card topline"><span class="eyebrow">A · Phase 1 capital</span><span class="num">~US$250k</span><p style="margin-top:12px">still to raise, of a US$650,000 Phase 1 ambition. US$400,000 is already committed.</p></div>
-  <div class="card topline"><span class="eyebrow">B · Equipment and spaces</span><span class="num">16 packages</span><p style="margin-top:12px">US$20,000 to US$100,000 each. Estimated equipment cost US$350,000; full packages up to US$700,000.</p></div>
+  <div class="card topline"><span class="eyebrow">B · Equipment and spaces</span><span class="num">~US$350k</span><p style="margin-top:12px">estimated cost of the equipment that makes the centre work for children: treatment rooms, rehabilitation gym, sensory room and more.</p></div>
   <div class="card topline"><span class="eyebrow">C · Launch operations</span><span class="num">~US$166k</span><p style="margin-top:12px">for the first 24 months (US$83,081 per year), so the centre opens with a funded team.</p></div>
  </div>
  <div class="callout"><span class="eyebrow">Being re-priced</span><p>Our construction estimate was built on a 240 m² reference footprint. The current Phase 1 brief covers about 367–479 m² of covered area, so the measured bill of quantities from the architect and contractors will replace it. The split of the US$650,000 ambition between land and site, construction, equipment and set-up will be confirmed with that price.</p></div>
- <h3 style="margin-top:var(--s4)">Sixteen ways to equip the centre</h3>
- <p>Each opportunity is a complete package: equipment or space plus what it takes to use it well. The suggested gift covers the estimated equipment cost and, where needed, freight, installation, training, consumables, servicing and a replacement reserve. Final amounts are confirmed with current quotations and a donor agreement.</p>
- {table(["#", "Opportunity", "Tier", "Equipment est. (US$)", "Suggested gift (US$)"], [[a, b, c, d, f"<strong>{g}</strong>"] for a, b, c, d, g in PACKAGES])}
- <p class="small">Core for opening: needed for daily care from day one. Therapy technology: extends what therapists can do. After clinical validation: funded once clinical use is confirmed. Built environment and legacy: permanent, visible spaces.</p>
- <figure style="max-width:520px;margin-top:var(--s3)"><img src="../assets/img/bahia-treatment-room-illustrative.jpg" alt="Illustration of a child and a carer with a physiotherapist in a bright treatment room" loading="lazy" width="1400" height="1050"><figcaption><span class="badge-ill">Illustrative</span> Equipped paediatric treatment rooms (opportunity 03). Image for illustration only.</figcaption></figure>
 </div></section>
 <section class="bg-red"><div class="wrap grid g2" style="align-items:center"><div><span class="eyebrow">Be part of Bahía de Niños</span><h2>Help build a permanent home for care in Bali</h2><p>Recognition, transparent reporting against budget, and an invitation to visit the site and meet the team. Restricted gifts are tracked and reported against their agreed purpose.</p></div><div style="justify-self:end"><a class="btn btn-primary" href="../donate.html">Donate</a></div></div></section>
 """
@@ -824,7 +800,7 @@ donate_body = head("Donate",
 {table(["Gift", "What it funds", "Indicative amount"], [
   ["Lead and legacy gifts", "A major part of the Bahía de Niños Phase 1 capital gap: a building unit, the rehabilitation and training pavilion, or a named programme.", "US$50,000 – 250,000"],
   ["Built-environment gifts", "Inclusive playground, outdoor therapy pavilion, salt-water therapy pool (once priced).", "US$50,000 – 100,000"],
-  ["Equipment packages", "Any of the <a href='projects/bahia-de-ninos.html#funding'>16 opportunities</a> to equip the centre.", "US$20,000 – 75,000"],
+  ["Equipment and spaces", "Equipping the <a href='projects/bahia-de-ninos.html#funding'>Bahía de Niños centre</a>: treatment rooms, rehabilitation gym, sensory room and therapy technology.", "US$20,000 – 75,000"],
   ["Launch operations", "The first 24 months of the local team and centre operations.", "US$83,081 per year"],
   ["Sponsor a physiotherapist", "One Indonesian physiotherapist for a year, fully loaded.", "≈ US$3,600 per year"],
   ["Keep families moving", "Running costs of one adapted transport vehicle for a year.", "≈ US$3,350 per year"],
